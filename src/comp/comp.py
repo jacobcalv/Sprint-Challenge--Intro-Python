@@ -43,7 +43,7 @@ alphabet_string = string.ascii_uppercase
 alphabet_list = list(alphabet_string)
 
 print("Starts between C and G, inclusive:")
-c = [x.name for x in humans if x.name[0] == 'C' or 'D' or 'E' or 'F' or 'G']
+c = [x.name for x in humans if alphabet_list[2] <= x.name[0] <= alphabet_list[6]]
 print(c)
 print(alphabet_list[3])
 
@@ -62,18 +62,18 @@ print(e)
 # age, for example ("David", 31), for everyone between the ages of 27 and 32,
 # inclusive.
 print("Names and ages between 27 and 32:")
-f = [{x.name} for x in humans]
+age_range = range(27,33)
+f = [(x.name, x.age) for x in humans if age_range[0] <= x.age <= age_range[-1]]
 print(f)
-
 # Write a list comprehension that creates a list of new Humans like the old
 # list, except with all the names uppercase and the ages with 5 added to them.
 # The "humans" list should be unmodified.
 print("All names uppercase:")
-g = []
+g = [Human(x.name.upper(), x.age + 5) for x in humans]
 print(g)
 
 # Write a list comprehension that contains the square root of all the ages.
 print("Square root of ages:")
 import math
-h = []
+h = [math.sqrt(x.age) for x in humans]
 print(h)
